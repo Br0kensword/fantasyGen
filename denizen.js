@@ -1,4 +1,4 @@
-const fantasyNames = require('./fantasyNames.js')  //using for all names atm
+const FN = require('./fantasyNames.js') 
 
 const baseStat = 10;
 const fantasyDenizens = ['Humans', 'Elves', 'Orcs', 'Goblins', 'Ancient Ones', 'LizardFolk', 'RatFolk',  'Dwarves', 'Gnones',
@@ -22,14 +22,9 @@ const goverment = [["Anarchy", 'Nomadic Horde', 'Tribal Federation', 'Tribal Des
 
 
 
-
 function generateDenizen(){
+	
 	let denizen = {}
-	let gender = Math.round(Math.random())
-	let place = fantasyNames.male[Math.floor( (Math.random() * fantasyNames.male.length) + 1) - 1]
-	if (gender === 0){
-		place = fantasyNames.female[Math.floor( (Math.random() * fantasyNames.female.length) + 1) - 1]
-	}
 
 	denizen.Type = fantasyDenizens[Math.floor( (Math.random() * fantasyDenizens.length) + 1) - 1] // select denizen type
 
@@ -59,7 +54,7 @@ function generateDenizen(){
 	let govOptions = goverment[techLevel]
 	denizen.Goverment = govOptions[Math.floor( (Math.random() * govOptions.length) + 1) -1]
 
-	denizen.Name = `The ${denizen.Type} of ${place}`
+	denizen.Name = `The ${denizen.Type} of ${FN.generateName()}`
 
 	return denizen
 }
